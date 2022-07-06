@@ -14,7 +14,7 @@ This repository is the official PyTorch implementation of *Resotration of User V
 3. [Test](#Test)
 4. [Results](#Results)
 5. [Citation](#Citation)
-6. [Acknowledgment](#Acknowlegment)
+6. [Acknowledgment](#Acknowledgment)
 7. [License](#License)
 
 
@@ -169,6 +169,7 @@ database of user videos shared on different social media platforms.
    ```
 
 <h2 id="Results"> Results </h2>
+
 We achieve the best performance comparing other SOTA methods.
 
 The visual comparisons on the UVSSM dataset. The upscale factor is x2.
@@ -188,6 +189,7 @@ More results can be found in the supplementary materials.
 
 
 <h2 id="Acknowledgment"> Acknowledgment </h2>
+
    Our code is built on [EDVR](https://github.com/xinntao/EDVR). We thank the authors for sharing their codes.
 
 <h2 id="License"> License </h2> 
