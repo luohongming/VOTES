@@ -50,9 +50,7 @@ database of user videos shared on different social media platforms.
 <h2 id="Installation"> Installation </h2>
 
 * Python 3.7
-
 * PyTorch >= 1.8.0
-
 * NVIDIA GPU + CUDA
 
 1. Clone repo
