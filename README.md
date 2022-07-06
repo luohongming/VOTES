@@ -8,17 +8,17 @@ This repository is the official PyTorch implementation of *Resotration of User V
 
 ## Contents
 
-0. [Introduction](##Introduction)
-1. [Installation](##Installation)
-2. [Train](##Train)
-3. [Test](##Test)
-4. [Results](##Results)
-5. [Citation](##Citation)
-6. [Acknowledgment](##Acknowlegment)
-7. [License](##License)
+0. [Introduction](#Introduction)
+1. [Installation](#Installation)
+2. [Train](#Train)
+3. [Test](#Test)
+4. [Results](#Results)
+5. [Citation](#Citation)
+6. [Acknowledgment](#Acknowlegment)
+7. [License](#License)
 
 
-## Introduction
+<h2 id="Introduction"> Introduction </h2>
 
 User videos shared on social media platforms usually suffer from
 degradations caused by unknown proprietary processing procedures,
@@ -47,9 +47,12 @@ database of user videos shared on different social media platforms.
 
 ![](./figures/fig1_arch3.png)
 
-## Installation
+<h2 id="Installation"> Installation </h2>
+
 * Python 3.7
+
 * PyTorch >= 1.8.0
+
 * NVIDIA GPU + CUDA
 
 1. Clone repo
@@ -69,7 +72,7 @@ database of user videos shared on different social media platforms.
     python setup.py develop
     ```
 
-## Train
+<h2 id="Train"> Train </h2>>
 ### 1. Dataset preparation
    You need to download the UVSSM dataset or REDS dataset.
 
@@ -141,8 +144,8 @@ database of user videos shared on different social media platforms.
    bash dist_train.sh 2 ./options/train/VOTES/train_VOTES_L_x2_SR_REDS_QP33.yml 4321
    bash dist_train.sh 3 ./options/train/VOTES/train_VOTES_L_x2_SR_UVSSMWeChat.yml 4321
    ```
-   
-##Test
+
+<h2 id="Test"> Test </h2>
 
    You can test the VOTES using the following commands:
 
@@ -164,7 +167,7 @@ database of user videos shared on different social media platforms.
    bash dist_train.sh 3 ./options/train/VOTES/train_VOTES_L_x2_SR_UVSSMWeChat.yml 4321
    ```
 
-##Results
+<h2 id="Results"> Results </h2>
 We achieve the best performance comparing other SOTA methods.
 
 The visual comparisons on the UVSSM dataset. The upscale factor is x2.
@@ -180,13 +183,13 @@ More results can be found in the supplementary materials.
 
 
 
-##Citation
+<h2 id="Citation"> Citation </h2>
 
 
-##Acknowledgment 
+<h2 id="Acknowledgment"> Acknowledgment </h2>
    Our code is built on [EDVR](https://github.com/xinntao/EDVR). We thank the authors for sharing their codes.
 
-##License 
+<h2 id="License"> License </h2> 
 
    The code and UVSSM dataset are released under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
    Public License for NonCommercial use only. Any commercial use should get formal permission first. 
