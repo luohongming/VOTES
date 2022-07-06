@@ -6,7 +6,8 @@ This repository is the official PyTorch implementation of *Resotration of User V
 ([arxiv]()). This paper has been accepted by ACMMM 2022.
 
 
-##Contents
+## Contents
+
 0. [Introduction](##Introduction)
 1. [Installation](##Installation)
 2. [Train](##Train)
@@ -17,7 +18,7 @@ This repository is the official PyTorch implementation of *Resotration of User V
 7. [License](##License)
 
 
-##Introduction
+## Introduction
 
 User videos shared on social media platforms usually suffer from
 degradations caused by unknown proprietary processing procedures,
@@ -46,7 +47,7 @@ database of user videos shared on different social media platforms.
 
 ![](./figures/fig1_arch3.png)
 
-##Installation
+## Installation
 * Python 3.7
 * PyTorch >= 1.8.0
 * NVIDIA GPU + CUDA
@@ -68,7 +69,7 @@ database of user videos shared on different social media platforms.
     python setup.py develop
     ```
 
-##Train
+## Train
 ### 1. Dataset preparation
    You need to download the UVSSM dataset or REDS dataset.
 
