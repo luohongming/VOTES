@@ -72,7 +72,7 @@ database of user videos shared on different social media platforms.
     python setup.py develop
     ```
 
-<h2 id="Train"> Train </h2>>
+<h2 id="Train"> Train </h2>
 ### 1. Dataset preparation
    You need to download the UVSSM dataset or REDS dataset.
 
