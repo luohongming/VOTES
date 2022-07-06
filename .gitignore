@@ -1,0 +1,13 @@
+
+# ignored folders
+datasets/*
+experiments/*
+results/*
+tb_logger/*
+
+__pycache__/
+*.egg-info/
+*.eggs
+build/
+.idea/
+ops/dcn/deform_conv_ext.cpython-37m-x86_64-linux-gnu.so

@@ -1,0 +1,125 @@
+# general settings
+name: VOTES_L_x2_SR_REDS_QP33
+model_type: VOTESModel
+scale: 2
+num_gpu: 1 # set num_gpu: 0 for cpu mode
+manual_seed: 10
+debug: false
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: REDS_compressed
+    type: UVSSMDataset
+    dataroot_gt: ./datasets/REDS_compressed/HQ_frames
+    dataroot_lq: ./datasets/REDS_compressed/LQ_frames_qp33_x2
+    meta_info_file: ./data/meta_info/meta_info_REDS.txt
+    meta_val_file: ./data/meta_info/meta_info_REDS4_test_GT.txt
+    meta_test_file: ./data/meta_info/meta_info_REDSofficial_test_GT.txt
+#    val_partition: ['108', '023', '216', '018', '155', '016', '198', '151', '052', '154', '111', '065', '130', '167']
+    io_backend:
+      type: disk
+
+    num_frame: 5
+    center_gt: True
+    gt_size: 128
+    interval_list: [1]
+    random_reverse: false
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 1
+    batch_size_per_gpu: 16
+    dataset_enlarge_ratio: 200
+    prefetch_mode: ~
+
+  val:
+    name: REDS4
+    type: VideoUVSSMTestDataset
+    dataroot_gt: ./datasets/REDS_compressed/HQ_frames
+    dataroot_lq: ./datasets/REDS_compressed/LQ_frames_qp33_x2
+    dataroot_mask: ~
+    meta_info_file: ./data/meta_info/meta_info_REDS4_test_GT.txt
+    # change to 'meta_info_REDSofficial4_test_GT' when use the official validation partition
+    io_backend:
+      type: disk
+
+    cache_data: false
+    center_gt: True
+    num_frame: 5
+    padding: reflection_circle
+
+# network structures
+network_g:
+  type: VOTES
+  num_in_ch: 3
+  num_feat: 128
+  num_frame: 5
+  deformable_groups: 8
+  num_extract_block: 5
+  num_reconstruct_block: 40
+  center_frame_idx: ~
+  num_modulation_blocks: 10
+  bin_model: ./experiments/bin_100000.pth
+  sr_factor: 2
+
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: false
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: Adam
+    lr: !!float 2e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: CosineAnnealingRestartLR
+    periods: [ 25000, 50000, 75000, 75000, 75000 ]
+    restart_weights: [ 1, 0.5, 0.5, 0.5, 0.5 ]
+    eta_min: !!float 1e-7
+
+  total_iter: 300000
+  warmup_iter: -1  # no warm up
+  senmap_iter: ~
+  dcn_lr_mul: 1
+
+  # losses
+  pixel_opt:
+    type: CharbonnierLoss
+    loss_weight: 1.0
+    reduction: sum
+
+# validation settings
+val:
+  val_freq: !!float 5e3
+  save_img: True
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: True
+
+# logging settings
+logger:
+  print_freq: 200
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: false
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29600
+
+find_unused_parameters: true

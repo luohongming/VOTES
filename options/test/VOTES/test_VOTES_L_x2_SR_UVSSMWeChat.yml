@@ -1,0 +1,61 @@
+# general settings
+name: VOTES_L_x2_SR_wechat
+model_type: VOTESModel
+scale: 2
+num_gpu: 1 # set num_gpu: 0 for cpu mode
+manual_seed: 10
+debug: false
+
+# dataset and data loader settings
+datasets:
+  val:
+    name: UVSSMWeChat
+    type: VideoUVSSMTestDataset
+    dataroot_gt: ./datasets/UVSSM/WeChat/HQ_frames
+    dataroot_lq: ./datasets/UVSSM/WeChat/LQ_frames
+    meta_info_file: ./data/meta_info/meta_info_UVSSMWeChat_test2.txt
+    io_backend:
+      type: disk
+
+    cache_data: false
+    center_gt: True
+    num_frame: 5
+    padding: reflection_circle
+
+# network structures
+network_g:
+  type: VOTES
+  num_in_ch: 3
+  num_feat: 128
+  num_frame: 5
+  deformable_groups: 8
+  num_extract_block: 5
+  num_reconstruct_block: 40
+  center_frame_idx: ~
+  num_modulation_blocks: 10
+  bin_model: ~
+  sr_factor: 2
+
+
+
+# path
+path:
+  pretrain_network_g: ./experiments/net_VOTES_UVSSMWeChat.pth
+  strict_load_g: false
+
+# validation settings
+val:
+  save_img: True
+  suffix: VOTES
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: True
+
+    ssim: # metric name, can be arbitrary
+      type: calculate_ssim
+      crop_border: 2
+      test_y_channel: True
+
