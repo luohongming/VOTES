@@ -3,7 +3,7 @@
 Hongming Luo, Fei Zhou, Kim man Lam, Guoping Qiu
 
 This repository is the official PyTorch implementation of *Resotration of User Videos Shared on Social Media*
-([arxiv]()). This paper has been accepted by ACMMM 2022.
+([arxiv](https://arxiv.org/abs/2208.08597)). This paper has been accepted by ACMMM 2022.
 
 
 ## Contents
@@ -185,6 +185,14 @@ More results can be found in the supplementary materials.
 
 <h2 id="Citation"> Citation </h2>
 
+```
+@InProceedings{Luo2022VOTES,
+  author    = {Hongming Luo, Fei Zhou, Kin-man Lam and Guoping Qiu},
+  title     = {Resotration of User Videos Shared on Social Media},
+  booktitle = {ACMMM},
+  year      = {2022},
+}
+```
 
 <h2 id="Acknowledgment"> Acknowledgment </h2>
 
